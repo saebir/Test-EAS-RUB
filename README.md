@@ -1,22 +1,20 @@
-# Første forsøg på app til Rock under Broen.
-Dette er en mobilapp udviklet med React Native og Expo som en del af et skoleprojekt. Appen er lavet til festivalen Rock under Broen og indeholder funktioner som login, opret bruger, nulstil adgangskode, programoversigt og en hjem-skærm med nedtælling til festivalstart. Brugerdata og autentificering håndteres med Supabase.
+# TEST-RUB – Firebase & EAS Dev Client test  
+Dette projekt er en simpel test-app lavet i React Native med Expo og Firebase, hvor jeg afprøvede EAS Build og Dev Client for første gang. Appen indeholder kun login og opret bruger, og blev brugt til at teste emulatoropsætning og Firebase-auth i Dev Client-miljø.
 
 ## Teknologier brugt
 - React Native (Expo)
-- Supabase (Auth)
+- Firebase (Authentication)
+- EAS Build og Dev Client
 - React Navigation
 - JavaScript (JSX)
+- Android Emulator (via Android Studio)
 - Visual Studio Code
 
 ## Funktioner
-
-- Login med e-mail og adgangskode
-- Opret bruger med bekræftelse via e-mail
-- Glemt adgangskode 
-- Hjem-skærm med nedtælling til festivalstart
-- Navigation til programoversigt og øvrige menupunkter
-- Brug af sharedStyles for ensartet design
-- Responsivt layout til mobil
+- Login med e-mail og adgangskode (Firebase)
+- Opret bruger med Firebase-auth
+- Enkel navigation mellem login og tilmeld
+- Brug af EAS Dev Client i stedet for Expo Go
 
 ## Sådan kører du projektet på din egen computer
 ### 1. Installer Node.js
@@ -24,12 +22,9 @@ Dette er en mobilapp udviklet med React Native og Expo som en del af et skolepro
 Download og installer Node.js fra https://nodejs.org
 (Node.js indeholder også npm, som vi skal bruge)
 
-### 2. Installer Expo CLI (kun første gang)
-   
-Åbn terminalen/kommandoprompt og skriv:
-
+### 2. Installer Expo CLI og EAS CLI
 ```bash
-npm install -g expo-cli
+npm install -g expo-cli eas-cli
 ```
 
 ### 3. Klon projektet fra Github
@@ -45,11 +40,28 @@ cd F-rste-Login
 npm install
 ```
 
-### 5. Start appen med Expo
+### 5. Byg med EAS og start Dev Client
 
 ```bash
-npx expo start
+eas build --profile development --platform android
 ```
 
+Når buildet er færdigt, installer .apk-filen i emulator eller på en fysisk enhed (via adb install).
 
-Når Metro bundler åbner kan man vælge at scanne QR-koden for at se appen på telefonen, eller åbne en simulator der er sat op.
+### 6. Start derefter appen i Dev Client:
+
+```bash
+npx expo start --dev-client
+```
+
+### Emulatortip:
+Hvis emulatoren ikke åbner:
+
+```bash
+emulator -list-avds
+emulator -avd <navn_på_emulator> -gpu swiftshader_indirect
+npx expo start --dev-client
+```
+
+## Status
+Projektet er ikke færdigt, men fungerede som teknisk test. Enkelte dele af koden er senere blevet genbrugt i det fulde "Rock under Broen"-projekt.
